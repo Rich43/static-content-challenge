@@ -8,6 +8,8 @@ const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
 const marked = require("marked");
 
+const whitelist = require('./content/whitelist.json');
+
 app.get("/", (req, res) => {
   const page = req.query['page'];
   const defaultPage = 'blog/june/company-update';
@@ -17,6 +19,11 @@ app.get("/", (req, res) => {
   for (const match of matches) {
     switch (match[1].toLowerCase()) {
         case 'content':
+            if (page) {
+                if (!whitelist.find(item => item === page)) {
+                    res.status(404).send('Page not found');
+                }
+            }
             let content = fs.readFileSync(
                 `./content/${page ? page : defaultPage}/index.md`,
                 'utf8'
