@@ -1,40 +1,21 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const fs = require("fs");
-const createDOMPurify = require('dompurify');
-const { JSDOM } = require('jsdom');
+const contentEngineService = require('./contentEngineService.js');
 
-const window = new JSDOM('').window;
-const DOMPurify = createDOMPurify(window);
-const marked = require("marked");
-
-const whitelist = require('./content/whitelist.json');
+function executeContentEngine(page, res) {
+  const defaultPage = 'blog/june/company-update';
+  const content = contentEngineService(page, defaultPage);
+  res.status(content[0]).send(content[1]);
+}
 
 app.get("/", (req, res) => {
   const page = req.query['page'];
-  const defaultPage = 'blog/june/company-update';
-  const regex = /{{\s*(\w*)\s*}}/g;
-  let template = fs.readFileSync('./template.html', 'utf8');
-  const matches = template.matchAll(regex);
-  for (const match of matches) {
-    switch (match[1].toLowerCase()) {
-        case 'content':
-            if (page) {
-                if (!whitelist.find(item => item === page)) {
-                    res.status(404).send('Page not found');
-                }
-            }
-            let content = fs.readFileSync(
-                `./content/${page ? page : defaultPage}/index.md`,
-                'utf8'
-            );
+  executeContentEngine(page, res);
+});
 
-            content = DOMPurify.sanitize(marked.parse(content));
-            template = template.replaceAll(match[0], content);
-            break;
-    }
-  }
-  res.send(template);
+app.get('/:page(*)', (req, res) => {
+  const page = req.params['page'];
+  executeContentEngine(page, res);
 });
 
 app.listen(3000, () => {
