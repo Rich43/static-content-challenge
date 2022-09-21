@@ -5,7 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.18.1",
-    "lts": "^1.2.0"
+    "lts": "^1.2.0",
+    "marked": "^4.1.0",
+    "dompurify": "^2.4.0",
+    "jsdom": "^20.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
