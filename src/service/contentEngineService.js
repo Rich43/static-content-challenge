@@ -1,6 +1,6 @@
-const whitelist = require('./content/whitelist.json');
+const whitelist = require('../content/whitelist.json');
 const fs = require('fs');
-const parseMarkdown = require('./markdown.js');
+const parseMarkdown = require('../util/markdown.js');
 
 function checkForInvalidPage(page) {
     if (page) {

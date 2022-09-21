@@ -4,14 +4,16 @@
   "description": "**NB: Please do not fork this repository, to avoid your solution being visible from this repository's GitHub page. Please clone this repository and submit your solution as a separate repository.**",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.18.1",
-    "lts": "^1.2.0",
-    "marked": "^4.1.0",
     "dompurify": "^2.4.0",
-    "jsdom": "^20.0.0"
+    "express": "^4.17.1",
+    "jsdom": "^20.0.0",
+    "lts": "^1.2.0",
+    "marked": "^4.1.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.19",
+    "supertest": "^6.0.1"
   },
   "scripts": {
     "start": "nodemon src/index.js",
