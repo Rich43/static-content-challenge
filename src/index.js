@@ -9,6 +9,7 @@ const DOMPurify = createDOMPurify(window);
 const marked = require("marked");
 
 app.get("/", (req, res) => {
+  const page = req.query['page'];
   const defaultPage = 'blog/june/company-update';
   const regex = /{{\s*(\w*)\s*}}/g;
   let template = fs.readFileSync('./template.html', 'utf8');
@@ -17,7 +18,7 @@ app.get("/", (req, res) => {
     switch (match[1].toLowerCase()) {
         case 'content':
             let content = fs.readFileSync(
-                `./content/${defaultPage}/index.md`,
+                `./content/${page ? page : defaultPage}/index.md`,
                 'utf8'
             );
 
