@@ -1,9 +1,71 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Welcome to Acme</title>
-    </head>
-    <body>
-      {{content}}
-    </body>
+<head>
+    <title>Welcome to Acme</title>
+    <style>
+        body {
+            background-color: #b01b1f;
+            color: #f9c7a4;
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: xx-large;
+        }
+
+        header {
+            padding: 2rem;
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            padding: 1rem;
+        }
+
+        nav a {
+            padding: 0.5rem;
+        }
+
+        a {
+            color: #f9c7a4;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h3>Navigation</h3>
+        <a href="/">Home</a>
+        <a href="/valves">Valves</a>
+        <a href="/jobs">Jobs</a>
+        <a href="/about-page">About</a>
+    </nav>
+    <main>
+        <header>
+            <img src="https://ksr-ugc.imgix.net/assets/003/488/267/210c162995de80609124abf81047bca7_original.png?ixlib=rb-4.0.2&w=700&fit=max&v=1427136681&auto=format&frame=1&q=92&s=eb4411c5e9d3557ffa64598ac3b238a6"
+                 alt="Acme Logo"/>
+        </header>
+        <article>
+            {{content}}
+        </article>
+    </main>
+</body>
 </html>
