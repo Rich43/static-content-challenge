@@ -3,7 +3,6 @@ global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 
 const ContentEngineService = require('./contentEngineService');
-const request = require('supertest');
 const ReadFileService = require('./readFileService');
 jest.mock('./readFileService');
 
