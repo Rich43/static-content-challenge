@@ -31,3 +31,5 @@ In this MVP sprint, there are two nice-to-have tickets:
 
 - The generated HTML page should be styled in a pleasing way
 - The MVP's GitHub repository should be configured for hosting on a cloud hosting service, and include a link to a live deployment
+
+** See animalData.js PR for Question 2 **
