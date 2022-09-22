@@ -1,10 +1,12 @@
 const express = require('express');
+const fs = require('fs');
 const app = express();
-const contentEngineService = require('./service/contentEngineService.js');
+const ContentEngineService = require('./service/contentEngineService.js');
+const ReadFileService = require('./service/readFileService.js');
 
 function executeContentEngine(page, res) {
     const defaultPage = 'blog/june/company-update';
-    const content = contentEngineService(page, defaultPage);
+    const content = new ContentEngineService(new ReadFileService(fs)).renderPage(page, defaultPage);
     res.status(content[0]).send(content[1]);
 }
 
